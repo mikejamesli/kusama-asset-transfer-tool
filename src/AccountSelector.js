@@ -41,11 +41,13 @@ function Main(props) {
 
   // Set the initial address
   useEffect(() => {
-    setAccountAddress(initialAddress);
-    setAccountSelected(initialAddress);
-    if (keyring) {
-      const accountPair = keyring.getPair(initialAddress);
-      apiManager.setAccount(accountPair, keyring);
+    if (initialAddress) {
+      setAccountAddress(initialAddress);
+      setAccountSelected(initialAddress);
+      if (keyring) {
+        const accountPair = keyring.getPair(initialAddress);
+        apiManager.setAccount(accountPair, keyring);
+      }
     }
   }, [setAccountAddress, initialAddress, keyring]);
 
